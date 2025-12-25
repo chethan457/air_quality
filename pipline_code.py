@@ -75,10 +75,11 @@ class AQIAutoDetector:
             
             row["Final_AQI"] = max(si_pm25, si_pm10, si_co)
             all_data.append(row)
-            print(f"✅ {filename} -> AQI: {int(row['Final_AQI'])}")
+            print(f" {filename} -> AQI: {int(row['Final_AQI'])}")
 
         pd.DataFrame(all_data).to_csv("aqi_logs.csv", index=False)
         print("\n--- Pipeline Complete! CSV Updated ---")
 
 if __name__ == "__main__":
+
     AQIAutoDetector().run()
