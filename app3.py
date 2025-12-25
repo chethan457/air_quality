@@ -89,10 +89,10 @@ if uploaded_file is not None:
         csv_path = "aqi_logs.csv"
         df_new = pd.DataFrame([new_data])
         df_new.to_csv(csv_path, mode='a', header=not os.path.exists(csv_path), index=False)
-        st.sidebar.success("✅ Processed and Logged!")
+        st.sidebar.success("Processed and Logged!")
 
 # Main Dashboard
-st.title("🌱 Real-Time Air Quality Dashboard")
+st.title("Real-Time Air Quality Dashboard")
 
 try:
     df = pd.read_csv("aqi_logs.csv")
@@ -112,7 +112,7 @@ try:
     st.divider()
 
     # Row 1: Metrics
-    st.subheader("📍 Latest Extraction Results")
+    st.subheader("Latest Extraction Results")
     m1, m2, m3, m4 = st.columns(4)
     m1.metric("PM 2.5", f"{latest['PM25']} µg/m³")
     m2.metric("PM 10", f"{latest['PM10']} µg/m³")
@@ -122,7 +122,7 @@ try:
     st.divider()
 
     # Row 2: Graph
-    st.subheader("📈 Pollutant Trends")
+    st.subheader("Pollutant Trends")
     fig = px.line(df, x="Timestamp", y=["Final_AQI", "PM25", "PM10"], 
                   labels={"value": "Concentration/Index", "variable": "Metric"},
                   title="Historical AQI Data Trend")
@@ -131,8 +131,9 @@ try:
     st.divider()
 
     # Row 3: Table
-    st.subheader("📜 Detailed Logs")
+    st.subheader("Detailed Logs")
     st.dataframe(df.sort_values(by="Timestamp", ascending=False), use_container_width=True)
 
 except Exception as e:
+
     st.info("Upload an image on the left and click 'Process' to start generating data.")
