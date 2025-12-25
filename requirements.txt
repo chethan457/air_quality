@@ -1,0 +1,14 @@
+# Image Processing & OCR
+opencv-python
+easyocr
+numpy
+
+# Data Handling & Dashboard
+pandas
+streamlit
+plotly
+
+# Machine Learning Backend (Ensures GPU support)
+torch
+torchvision
+torchaudio
